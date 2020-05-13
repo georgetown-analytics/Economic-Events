@@ -1,0 +1,364 @@
+-----BEGIN PRIVACY-ENHANCED MESSAGE-----
+Proc-Type: 2001,MIC-CLEAR
+Originator-Name: webmaster@www.sec.gov
+Originator-Key-Asymmetric:
+ MFgwCgYEVQgBAQICAf8DSgAwRwJAW2sNKK9AVtBzYZmr6aGjlWyK3XmZv3dTINen
+ TWSM7vrzLADbmYQaionwg5sDW3P6oaM5D3tdezXMm7z1T+B+twIDAQAB
+MIC-Info: RSA-MD5,RSA,
+ FVVMqBnFRvURJZBqeHuOAf/AIzTUe2wXaOmsHYc4nLlmODi8R9frHWFCMjaDXLyI
+ ulnEC3Isr7vYFkXYPl3Ziw==
+
+<SEC-DOCUMENT>0000950123-10-051591.txt : 20100520
+<SEC-HEADER>0000950123-10-051591.hdr.sgml : 20100520
+<ACCEPTANCE-DATETIME>20100520163105
+ACCESSION NUMBER:		0000950123-10-051591
+CONFORMED SUBMISSION TYPE:	8-K
+PUBLIC DOCUMENT COUNT:		1
+CONFORMED PERIOD OF REPORT:	20100518
+ITEM INFORMATION:		Submission of Matters to a Vote of Security Holders
+FILED AS OF DATE:		20100520
+DATE AS OF CHANGE:		20100520
+
+FILER:
+
+	COMPANY DATA:	
+		COMPANY CONFORMED NAME:			CROWN CASTLE INTERNATIONAL CORP
+		CENTRAL INDEX KEY:			0001051470
+		STANDARD INDUSTRIAL CLASSIFICATION:	COMMUNICATION SERVICES, NEC [4899]
+		IRS NUMBER:				760470458
+		STATE OF INCORPORATION:			DE
+		FISCAL YEAR END:			1231
+
+	FILING VALUES:
+		FORM TYPE:		8-K
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-16441
+		FILM NUMBER:		10848241
+
+	BUSINESS ADDRESS:	
+		STREET 1:		1220 AUGUSTA DRIVE
+		STREET 2:		SUITE 500
+		CITY:			HOUSTON
+		STATE:			TX
+		ZIP:			77057
+		BUSINESS PHONE:		7135703000
+
+	MAIL ADDRESS:	
+		STREET 1:		1220 AUGUSTA DRIVE
+		STREET 2:		SUITE 500
+		CITY:			HOUSTON
+		STATE:			TX
+		ZIP:			77057
+</SEC-HEADER>
+<DOCUMENT>
+<TYPE>8-K
+<SEQUENCE>1
+<FILENAME>c01487e8vk.htm
+<DESCRIPTION>FORM 8-K
+<TEXT>
+<HTML>
+<HEAD>
+<TITLE>Form 8-K</TITLE>
+</HEAD>
+<BODY bgcolor="#FFFFFF">
+<!-- PAGEBREAK -->
+
+<DIV style="font-family: 'Times New Roman',Times,serif; margin-left: .25in; width: 7.20in">
+
+
+
+<DIV style="font-size: 10pt">
+<DIV style="width: 100%; border-bottom: 2pt solid black; font-size: 1pt">&nbsp;</DIV>
+<DIV style="width: 100%; border-bottom: 1pt solid black; font-size: 1pt">&nbsp;</DIV>
+
+
+<P align="center" style="font-size: 14pt"><B>UNITED STATES<BR>
+SECURITIES AND EXCHANGE COMMISSION<BR>
+<FONT style="font-size: 12pt">Washington, D.C. 20549
+</FONT></B>
+
+<P align="center" style="font-size: 18pt"><B>FORM 8-K</B>
+
+<P align="center" style="font-size: 12pt"><B>CURRENT REPORT<BR>
+Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934</B>
+
+<P align="center" style="font-size: 10pt"><B>Date of Report (Date of earliest event reported): May 18, 2010</B>
+
+<P align="center">
+
+<P align="center" style="font-size: 24pt"><B>Crown Castle International Corp.<BR></B>
+<FONT style="font-size: 10pt">(Exact name of registrant as specified in its charter)
+</FONT>
+
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0" style="font-size: 10pt; text-align: center">
+<TR>
+    <TD width="32%">&nbsp;</TD>
+    <TD width="1%">&nbsp;</TD>
+    <TD width="33%">&nbsp;</TD>
+    <TD width="1%">&nbsp;</TD>
+    <TD width="32%">&nbsp;</TD>
+</TR>
+<TR valign="bottom">
+    <TD style="border-bottom: 1px solid #000000"><B>Delaware</B></TD>
+    <TD>&nbsp;</TD>
+    <TD style="border-bottom: 1px solid #000000"><B>001-16441</B></TD>
+    <TD>&nbsp;</TD>
+    <TD style="border-bottom: 1px solid #000000"><B>76-0470458</B></TD>
+</TR>
+<TR valign="top">
+    <TD>(State or other Jurisdiction of Incorporation)</TD>
+    <TD>&nbsp;</TD>
+    <TD>(Commission File Number)</TD>
+    <TD>&nbsp;</TD>
+    <TD>(IRS Employer Identification No.)</TD>
+</TR>
+</TABLE>
+
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0" style="font-size: 10pt; text-align: center">
+<TR>
+    <TD width="49%">&nbsp;</TD>
+    <TD width="1%">&nbsp;</TD>
+    <TD width="49%">&nbsp;</TD>
+</TR>
+<TR valign="bottom">
+    <TD style="border-bottom: 1px solid #000000"><B>1220 Augusta Drive<BR>Suite 500<BR>Houston, TX <BR></B></TD>
+    <TD>&nbsp;</TD>
+    <TD style="border-bottom: 1px solid #000000"><B>77057</B></TD>
+</TR>
+<TR valign="top">
+    <TD>(Address of Principal Executive Offices)</TD>
+    <TD>&nbsp;</TD>
+    <TD>(Zip Code)</TD>
+</TR>
+</TABLE>
+
+<P align="center" style="font-size: 10pt">Registrant&#146;s telephone number, including area code: <B>(713) 570-3000</B>
+
+
+<TABLE border="0" width="30%" cellspacing="0" cellpadding="0" style="font-size: 10pt; text-align: center">
+<TR>
+    <TD width="100%">&nbsp;</TD>
+</TR>
+<TR>
+    <TD nowrap style="border-bottom: 1px solid #000000"><B>&nbsp;</B></TD>
+</TR>
+<TR>
+    <TD nowrap>(Former name or former address if changed since last report.)</TD>
+</TR>
+</TABLE>
+
+<P align="left" style="font-size: 10pt">Check the appropriate box below if the Form 8-K filing is intended to simultaneously satisfy the filing obligation of the registrant
+under any of the following provisions:
+
+<P align="left" style="font-size: 10pt">
+<FONT face="Wingdings">&#111;</FONT> Written communications pursuant to Rule 425 under the Securities Act (17 CFR 230.425)<BR><BR>
+<FONT face="Wingdings">&#111;</FONT> Soliciting material pursuant to Rule 14a-12 under the Exchange Act (17 CFR 240.14a-12)<BR><BR>
+<FONT face="Wingdings">&#111;</FONT> Pre-commencement communications pursuant to Rule 14d-2(b) under the Exchange Act (17 CFR 240.14d-2(b))<BR><BR>
+<FONT face="Wingdings">&#111;</FONT> Pre-commencement communications pursuant to Rule 13e-4(c) under the Exchange Act (17 CFR 240.13e-4(c))<BR>
+
+
+<P>
+<DIV style="width: 100%; border-bottom: 1pt solid black; margin-top: 10pt; font-size: 1pt">&nbsp;</DIV>
+<DIV style="width: 100%; border-bottom: 2pt solid black; font-size: 1pt">&nbsp;</DIV>
+
+</DIV>
+
+<P align="center" style="font-size: 10pt">&nbsp;
+
+<P align="center" style="font-size: 10pt; display: none">1
+</DIV>
+
+<!-- PAGEBREAK -->
+<P><HR noshade><P>
+<H5 align="left" style="page-break-before:always">&nbsp;</H5><P>
+
+<DIV style="font-family: 'Times New Roman',Times,serif; margin-left: .25in; width: 7.20in">
+
+<P align="justify" style="font-size: 10pt"><B>ITEM 5.07 &#150; SUBMISSION OF MATTERS TO A VOTE OF SECURITY HOLDERS</B>
+
+
+<P align="justify" style="font-size: 10pt; text-indent: 2%">The annual meeting of the stockholders of Crown Castle international Corp. (&#147;Company&#148;) was held on May&nbsp;18, 2010,
+at which meeting the stockholders voted to (1)&nbsp;elect Edward C. Hutcheson, Jr., J. Landis Martin and W. Benjamin
+Moreland as Class&nbsp;III directors for a term of three years and (2)&nbsp;ratify the appointment of KPMG LLP as the Company&#146;s
+independent registered public accountants for fiscal year 2010. The voting results for each proposal submitted to a
+vote are set forth below:
+
+
+<P align="justify" style="font-size: 10pt"><B>Proposal 1 &#151; Election of Class&nbsp;III Directors</B>
+
+<DIV align="center">
+<TABLE style="font-size: 10pt" cellspacing="0" border="0" cellpadding="0" width="100%">
+<!-- Begin Table Head -->
+<TR valign="bottom">
+    <TD width="60%">&nbsp;</TD>
+    <TD width="5%">&nbsp;</TD>
+    <TD width="1%">&nbsp;</TD>
+    <TD width="6%">&nbsp;</TD>
+    <TD width="1%">&nbsp;</TD>
+    <TD width="5%">&nbsp;</TD>
+    <TD width="1%">&nbsp;</TD>
+    <TD width="6%">&nbsp;</TD>
+    <TD width="1%">&nbsp;</TD>
+    <TD width="5%">&nbsp;</TD>
+    <TD width="1%">&nbsp;</TD>
+    <TD width="6%">&nbsp;</TD>
+    <TD width="1%">&nbsp;</TD>
+</TR>
+<TR style="font-size: 10pt" valign="bottom">
+    <TD nowrap align="left" style="border-bottom: 1px solid #000000"><B>Name</B></TD>
+    <TD>&nbsp;</TD>
+    <TD nowrap align="center" colspan="2" style="border-bottom: 1px solid #000000"><B>Votes For</B></TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD nowrap align="center" colspan="2" style="border-bottom: 1px solid #000000"><B>Votes Withheld</B></TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD nowrap align="center" colspan="2" style="border-bottom: 1px solid #000000"><B>Broker Non-Votes</B></TD>
+    <TD>&nbsp;</TD>
+</TR>
+
+<!-- End Table Head -->
+<!-- Begin Table Body -->
+<TR valign="bottom" style="background: #cceeff">
+    <TD><DIV style="margin-left:10px; text-indent:-10px">Edward C. Hutcheson, Jr.</DIV></TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align="right">252,950,936</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align="right">1,184,317</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align="right">10,209,211</TD>
+    <TD>&nbsp;</TD>
+</TR>
+<TR valign="bottom">
+    <TD><DIV style="margin-left:10px; text-indent:-10px">J. Landis Martin</DIV></TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align="right">250,087,016</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align="right">4,048,237</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align="right">10,209,211</TD>
+    <TD>&nbsp;</TD>
+</TR>
+<TR valign="bottom" style="background: #cceeff">
+    <TD><DIV style="margin-left:10px; text-indent:-10px">W. Benjamin Moreland</DIV></TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align="right">252,986,192</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align="right">1,149,061</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align="right">10,209,211</TD>
+    <TD>&nbsp;</TD>
+</TR>
+<!-- End Table Body -->
+</TABLE>
+</DIV>
+
+
+<P align="justify" style="font-size: 10pt"><B>Proposal 2 &#151; Ratification of Appointment of KPMG LLP as Independent Registered Public Accountants for Fiscal Year 2010</B>
+
+<DIV align="center">
+<TABLE style="font-size: 10pt" cellspacing="0" border="0" cellpadding="0" width="100%">
+<!-- Begin Table Head -->
+<TR valign="bottom">
+    <TD width="33%">&nbsp;</TD>
+    <TD width="3%">&nbsp;</TD>
+    <TD width="34%">&nbsp;</TD>
+    <TD width="3%">&nbsp;</TD>
+    <TD width="33%">&nbsp;</TD>
+
+</TR>
+<TR style="font-size: 10pt" valign="bottom">
+    <TD nowrap align="center" style="border-bottom: 1px solid #000000"><B>Votes For</B></TD>
+    <TD>&nbsp;</TD>
+    <TD nowrap align="center" style="border-bottom: 1px solid #000000"><B>Votes Against</B></TD>
+    <TD>&nbsp;</TD>
+
+    <TD nowrap align="center" style="border-bottom: 1px solid #000000"><B>Abstentions</B></TD>
+
+</TR>
+
+<!-- End Table Head -->
+<!-- Begin Table Body -->
+<TR valign="bottom" style="background: #cceeff">
+
+    <TD align="center" valign="top">256,315,245</TD>
+    <TD>&nbsp;</TD>
+
+    <TD align="center" valign="top">7,994,892</TD>
+
+    <TD>&nbsp;</TD>
+
+    <TD align="center" valign="top">34,327</TD>
+
+</TR>
+<!-- End Table Body -->
+</TABLE>
+</DIV>
+
+<P align="center" style="font-size: 10pt">
+1
+
+<P align="center" style="font-size: 10pt">&nbsp;
+
+<P align="center" style="font-size: 10pt; display: none">2
+</DIV>
+
+<!-- PAGEBREAK -->
+<P><HR noshade><P>
+<H5 align="left" style="page-break-before:always">&nbsp;</H5><P>
+
+<DIV style="font-family: 'Times New Roman',Times,serif; margin-left: .25in; width: 7.20in">
+
+<P align="center" style="font-size: 10pt"><B>SIGNATURES</B>
+
+
+
+<P align="justify" style="font-size: 10pt; text-indent: 4%">Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to
+be signed on its behalf by the undersigned hereunto duly authorized.
+
+
+<P align="justify" style="font-size: 10pt; margin-left: 48%; font-size: 10pt"><B>CROWN CASTLE INTERNATIONAL CORP.</B>
+
+
+<P align="justify" style="font-size: 10pt; margin-left: 48%; font-size: 10pt"><U>By: /s/ E. Blake Hawk</U><BR>
+Name: E. Blake Hawk<BR>
+Title: Executive Vice President<BR>
+and General Counsel<BR>
+
+
+<P align="justify" style="font-size: 10pt">Date: May&nbsp;19, 2010
+
+
+<P align="center" style="font-size: 10pt">
+2
+
+
+<P align="center" style="font-size: 10pt">&nbsp;
+
+<P align="center" style="font-size: 10pt; display: none">3
+
+
+
+
+</DIV>
+</BODY>
+</HTML>
+</TEXT>
+</DOCUMENT>
+</SEC-DOCUMENT>
+-----END PRIVACY-ENHANCED MESSAGE-----
