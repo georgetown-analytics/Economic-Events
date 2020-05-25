@@ -68,6 +68,7 @@ master_finance_df=master_finance_df.sort_values(by=['ticker', 'date'])
 
 master_finance_df['year']=pd.DatetimeIndex(master_finance_df['date']).year
 master_finance_df['month']=pd.DatetimeIndex(master_finance_df['date']).month
+master_finance_df.to_csv("constructed\\capstone\\master_finance_save.csv", sep=',')
 pysqldf = lambda q: sqldf(q, globals())
 q  = """
 SELECT DISTINCT
@@ -115,9 +116,16 @@ mthly_sec= pysqldf(q)
 scrape_df=pd.read_csv("constructed\\capstone\\google_scrape_mthly.csv")
 scrape_df= scrape_df.loc[:, ~scrape_df.columns.str.contains('^Unnamed')]
 
-all_mthly_df=pd.merge(mthly_finance, mthly_sec, how='inner', \
+all_mthly_df1=pd.merge(mthly_finance, mthly_sec, how='left', \
 on=['ticker', 'year', 'month'], validate='one_to_one')
 
-
-all_mthly_df=pd.merge(all_mthly_df, scrape_df, how='inner', \
+all_mthly_df2=pd.merge(all_mthly_df1, scrape_df, how='left', \
 on=['ticker', 'year', 'month'], validate='one_to_one')
+    
+all_mthly_df2['sec_pos_words'].fillna(0, inplace=True)
+all_mthly_df2['sec_neg_words'].fillna(0, inplace=True)
+all_mthly_df2['mthly_filing_count'].fillna(0, inplace=True)
+all_mthly_df2['gs_poswords'].fillna(0, inplace=True)
+all_mthly_df2['gs_negwords'].fillna(0, inplace=True)
+
+all_mthly_df2.to_csv("constructed\\capstone\\combined_mthly_dataset.csv", sep=',')
