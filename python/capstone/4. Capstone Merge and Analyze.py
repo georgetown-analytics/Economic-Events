@@ -17,11 +17,13 @@ from pandasql import sqldf
 #to be used to get daily residual for each observation given past 100 obs and sp500
 def roll_reg(x, k):
     x.sort_values(by=['date'])
-    temp_df_100=x.iloc[k-99:k+1]
-
+    temp_df_100=x.iloc[k-100:k]
+    temp_df_pred_row=x.iloc[k:k+1]
     results= sm.OLS(temp_df_100['ln_return_price'], sm.add_constant(temp_df_100[['ln_return_index']])).fit()
-    temp_df_100['residuals'] = results.resid
-    rolling_resid_return=temp_df_100.iloc[99, 7]
+    
+    q=float(temp_df_pred_row['ln_return_index'])
+    temp_pred =  results.predict([1,q])
+    rolling_resid_return=float(temp_df_pred_row.iloc[0,4])-float(temp_pred)
     return rolling_resid_return
 
 
@@ -51,7 +53,9 @@ for x in master_finance_df.ticker.unique():
         except:
             temp_df.iloc[i,4]=0
             temp_df.iloc[i,5]=0
+    temp_df=temp_df.loc[~((temp_df['ln_return_index'] == 0) & (temp_df['ln_return_price'] == 0)),:]
     for p in range(100, len(temp_df)-100):
+        #print(p)
         temp_resid=roll_reg(temp_df, p)
         temp_df.iloc[p,6]=temp_resid
     temp_df=temp_df[['ticker','date','ln_return_price', 'ln_return_index', 'roll_resid']]  
