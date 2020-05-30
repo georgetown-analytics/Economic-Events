@@ -21,13 +21,15 @@ def roll_reg(x, k):
 
     results= sm.OLS(temp_df_100['ln_return_price'], sm.add_constant(temp_df_100[['ln_return_index']])).fit()
     temp_df_100['residuals'] = results.resid
-    rolling_resid_return=temp_df_100.iloc[99, 4]
+    rolling_resid_return=temp_df_100.iloc[99, 7]
     return rolling_resid_return
 
 
 master_finance_df= pd.read_csv("constructed\\capstone\\capstone_equity_ticker_daily.csv")
 master_finance_df= master_finance_df.loc[:, ~master_finance_df.columns.str.contains('^Unnamed')]
 master_finance_df.dtypes
+master_finance_df=master_finance_df.sort_values(by=['ticker', 'date'])
+master_finance_df=master_finance_df.reset_index(drop=True)
 
 #Does the following: calculation ln return price; ln return index; makes daily residuals
 #using roll_reg function above
@@ -55,7 +57,7 @@ for x in master_finance_df.ticker.unique():
     temp_df=temp_df[['ticker','date','ln_return_price', 'ln_return_index', 'roll_resid']]  
     stack_df=stack_df.append(temp_df)
     
-#stack_df.to_csv("constructed\\stack_backup.csv", sep=',')
+stack_df.to_csv("constructed\\stack_backup.csv", sep=',')
 #stack_df=pd.read_csv("constructed\\stack_backup.csv", sep=',') 
 stack_df= stack_df.loc[:, ~stack_df.columns.str.contains('^Unnamed')]
 stack_df.dtypes
