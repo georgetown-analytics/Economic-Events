@@ -14,12 +14,14 @@ import re
 import datetime as dt
 from pandasql import sqldf
 import math
+import nltk
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 
 #Create Dataframe of SEC Documents and Extracted Data For Purposes of Sentiment Analysis
-REPLACE_NO_SPACE = re.compile("[.;:!\'?,\"()\[\]]")
-REPLACE_WITH_SPACE = re.compile("(<br\s*/><br\s*/>)|(\-)|(\/)")
-
-
+words = set(nltk.corpus.words.words())
 sentiment_df=pd.DataFrame(columns=['ticker', 'path', \
 'string_datetime', 'text'])
 
@@ -49,11 +51,13 @@ for root, dirs, files in os.walk("downloaded\\capstone\\SEC", topdown=False):
             temp_text_dt=""
             print("No Datetime Found")
             
-        temp_text=REPLACE_NO_SPACE.sub("", temp_text)
-        temp_text=REPLACE_WITH_SPACE.sub("", temp_text)
+        temp_text_c1=temp_text.lower()
+        temp_text_c2=re.sub('[^abcdefghijklmnopqrstuvwxyz\s]', '', temp_text_c1)
+        temp_text_c3=" ".join(w for w in nltk.wordpunct_tokenize(temp_text_c2) \
+                                 if w.lower() in words or not w.isalpha())
 
         stemp_df =  stemp_df.append({'ticker': temp_ticker,  'path': temp_path, \
-        'string_datetime': temp_text_dt, 'text': temp_text}, ignore_index=True)
+        'string_datetime': temp_text_dt, 'text': temp_text_c3}, ignore_index=True)
             
             
         sentiment_df =  sentiment_df.append(stemp_df, ignore_index=True)
@@ -119,23 +123,46 @@ mini_sdf=analysis_df[['ticker', 'date', 'path', 'price', 'string_datetime']]
 mini_sdf=sentiment_df[['ticker', 'path', 'string_datetime', 'datetime', 'date']]
 minidf=analysis_df[['ticker', 'price', 'arith_resid', 'ret_ind']]
         
-from sklearn.feature_extraction.text import CountVectorizer
 
+#model and analyze
 sec_texts=analysis_df['text']
 
 cv = CountVectorizer(binary=True)
 cv.fit(sec_texts)
 X = cv.transform(sec_texts)
-target=analysis_df['ret_ind']
+y=analysis_df['ret_ind']
 
-from sklearn.linear_model import LogisticRegression
-#from sklearn.metrics import accuracy_score
-#from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(
+X, target, train_size = 0.5
+)
+
 
 lr = LogisticRegression()
-results=lr.fit(X, target)
-score = lr.score(X, target)
-print(score)
+model = lr.fit(X_train, y_train)
+print("Score:")
+print(model.score(X_test, y_test))
         
-        
-        
+feature_to_coef = {
+    word: coef for word, coef in zip(
+        cv.get_feature_names(), model.coef_[0]
+    )
+}
+for best_positive in sorted(
+    feature_to_coef.items(), 
+    key=lambda x: x[1], 
+    reverse=True)[:50]:
+    print (best_positive)
+
+for best_negative in sorted(
+    feature_to_coef.items(), 
+    key=lambda x: x[1])[:50]:
+    print (best_negative)
+
+
+
+
+
+
+
+
+
