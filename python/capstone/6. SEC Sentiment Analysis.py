@@ -12,13 +12,13 @@ os.chdir("..")
 import pandas as pd
 import re
 import datetime as dt
-from pandasql import sqldf
 import math
 import nltk
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
 
 #Create Dataframe of SEC Documents and Extracted Data For Purposes of Sentiment Analysis
 words = set(nltk.corpus.words.words())
@@ -84,7 +84,7 @@ for x in range(len(sentiment_df)):
         sentiment_df.iloc[x, 5]=0
         print("No Extractable Date Value") 
 
-
+sentiment_df.to_csv("constructed\\capstone\\6_code_sentiment_df.csv", sep=',')
 
 sentiment_df=sentiment_df.\
 loc[~(sentiment_df['date']==0),:]
@@ -122,6 +122,11 @@ mini_sdf=analysis_df[['ticker', 'date', 'path', 'price', 'string_datetime']]
 #mini_sdf=mini_sdf[['ticker', 'path', 'string_datetime', 'datetime', 'date']]
 mini_sdf=sentiment_df[['ticker', 'path', 'string_datetime', 'datetime', 'date']]
 minidf=analysis_df[['ticker', 'price', 'arith_resid', 'ret_ind']]
+
+
+#analysis_df['abs_arith_resid']=abs(analysis_df['arith_resid'])
+#analysis_df['abs_arith_resid'].describe()
+#analysis_df=analysis_df[analysis_df['abs_arith_resid']>.02]
         
 
 #model and analyze
@@ -133,7 +138,7 @@ X = cv.transform(sec_texts)
 y=analysis_df['ret_ind']
 
 X_train, X_test, y_train, y_test = train_test_split(
-X, target, train_size = 0.5
+X, y, train_size = 0.5
 )
 
 
@@ -150,19 +155,22 @@ feature_to_coef = {
 for best_positive in sorted(
     feature_to_coef.items(), 
     key=lambda x: x[1], 
-    reverse=True)[:50]:
+    reverse=True)[:10]:
     print (best_positive)
 
 for best_negative in sorted(
     feature_to_coef.items(), 
-    key=lambda x: x[1])[:50]:
+    key=lambda x: x[1])[:10]:
     print (best_negative)
 
+y_pred = model.predict(X_test)
+print(confusion_matrix(y_test, y_pred))
+print(classification_report(y_test, y_pred))
 
 
-
-
-
+bio_features=sorted(feature_to_coef.items(), key=lambda x: x[1])
+bio_features_df=pd.DataFrame(bio_features, columns=['word', 'coef_value'])
+bio_features_df.to_csv("constructed\\bio_dataset_features.csv", sep=',')
 
 
 
