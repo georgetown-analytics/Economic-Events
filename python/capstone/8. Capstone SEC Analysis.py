@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun May 31 14:41:35 2020
+Created on Sun Mar  1 12:30:27 2020
 
 @author: Stephen Sigrist
 """
-
 import os
 os.chdir("..")
-
+import shutil
 
 import pandas as pd
 import re
 import datetime as dt
 import math
 import nltk
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
@@ -29,51 +29,78 @@ from sklearn.ensemble import BaggingClassifier, ExtraTreesClassifier, RandomFore
 import warnings
 warnings.filterwarnings("ignore")
 
-#Create Dataframe of SEC Documents and Extracted Data For Purposes of Sentiment Analysis
+
+        
+#make dataframe of tickers to gather data about
+tickers_data = pd.read_csv("input files\\capstone\\big ticker list.csv", index_col=False)
+#tickers_data=tickers_data[0:3]
+tickers_data=tickers_data.reset_index(drop=True)
+
 words = set(nltk.corpus.words.words())
+
+"""
 sentiment_df=pd.DataFrame(columns=['ticker', 'path', \
 'string_datetime', 'text'])
+    
 
-    
-    
-for root, dirs, files in os.walk("downloaded\\capstone\\SEC", topdown=False):
-    for name in files:
-        print(name)
-        print(os.path.join(root, name))
-        
-        temp_path=os.path.join(root, name)
-        temp_ticker=temp_path.split('\\')[4]
-        temp_text=open(os.path.join(root, name), "r").read(1000000)
-        #sec.append(temp_text)
-        
-        stemp_df= pd.DataFrame(columns=['ticker', 'path', 'string_datetime', 'text'])
-        
+dl = Downloader("downloaded\\big capstone\\SEC")
+for i in range(len(tickers_data)):
+    print(tickers_data['ticker'][i])
+    for filing_type in dl.supported_filings:
         try:
-            temp_text_obj=re.search(r'(<ACCEPTANCE-DATETIME>)(.*$)', temp_text, re.M|re.I)
+           dl.get(filing_type, tickers_data['ticker'][i], 200)
         except:
-            temp_text=""
-            temp_text_obj=re.search(r'(<ACCEPTANCE-DATETIME>)(.*$)', temp_text, re.M|re.I)
+            print("An Error Occured While Downloading "+tickers_data['ticker'][i])
+   
+    for root, dirs, files in os.walk("downloaded\\big capstone\\SEC", topdown=False):
+        for name in files:
+            #print(name)
+            #print(os.path.join(root, name))
+        
+            temp_path=os.path.join(root, name)
+            temp_ticker=temp_path.split('\\')[4]
+            #print(temp_ticker)
+        
+            stemp_df= pd.DataFrame(columns=['ticker', 'path', 'string_datetime', 'text'])
+        
+            try:
+                temp_text=open(os.path.join(root, name), "r").read(1000000)
+                temp_text_obj=re.search(r'(<ACCEPTANCE-DATETIME>)(.*$)', temp_text, re.M|re.I)
+            except:
+                temp_text=""
+                temp_text_obj=re.search(r'(<ACCEPTANCE-DATETIME>)(.*$)', temp_text, re.M|re.I)
        
-        try:
-            temp_text_dt=temp_text_obj.group(2)
-        except:
-            temp_text_dt=""
-            print("No Datetime Found")
+            try:
+                temp_text_dt=temp_text_obj.group(2)
+            except:
+                    temp_text_dt=""
+                    print("No Datetime Found")
             
-        temp_text_c1=temp_text.lower()
-        temp_text_c2=re.sub('[^abcdefghijklmnopqrstuvwxyz\s]', '', temp_text_c1)
-        temp_text_c3=" ".join(w for w in nltk.wordpunct_tokenize(temp_text_c2) \
+            temp_text_c1=temp_text.lower()
+            temp_text_c2=re.sub('[^abcdefghijklmnopqrstuvwxyz\s]', '', temp_text_c1)
+            temp_text_c3=" ".join(w for w in nltk.wordpunct_tokenize(temp_text_c2) \
                                  if w.lower() in words or not w.isalpha())
 
-        stemp_df =  stemp_df.append({'ticker': temp_ticker,  'path': temp_path, \
-        'string_datetime': temp_text_dt, 'text': temp_text_c3}, ignore_index=True)
+            stemp_df =  stemp_df.append({'ticker': temp_ticker,  'path': temp_path, \
+            'string_datetime': temp_text_dt, 'text': temp_text_c3}, ignore_index=True)
             
-            
-        sentiment_df =  sentiment_df.append(stemp_df, ignore_index=True)
+            temp_text=""
+        
+            sentiment_df =  sentiment_df.append(stemp_df, ignore_index=True)
 
-        print("Finished")
+    shutil.rmtree("downloaded\\big capstone\\SEC", ignore_errors=True)
+    os.mkdir("downloaded\\big capstone\\SEC")
+    sentiment_df.to_csv("constructed\\big_runningsave_SEC.csv", sep=',')
+
+sentiment_df.to_csv("constructed\\big_sec_sentiment.csv", sep=',')
 
 
+
+
+sentiment_df=pd.read_csv("constructed\\big_sec_sentiment.csv", \
+dtype={'string_datetime': 'object'}, sep=',', nrows=100000)
+sentiment_df=sentiment_df.loc[:, ~sentiment_df.columns.str.contains('^Unnamed')]
+sentiment_df=sentiment_df.reset_index(drop=True)
 
 sentiment_df.dtypes
 sentiment_df['datetime']=0 
@@ -92,23 +119,33 @@ for x in range(len(sentiment_df)):
         sentiment_df.iloc[x, 4]=0
         sentiment_df.iloc[x, 5]=0
         print("No Extractable Date Value") 
-
-#sentiment_df.to_csv("constructed\\capstone\\6_code_sentiment_df.csv", sep=',')
-sentiment_df=pd.read_csv("constructed\\capstone\\6_code_sentiment_df.csv", sep=',')
+        
+sentiment_df.to_csv("constructed\\big_sec_sentiment.csv", sep=',')
+"""
+sentiment_df=pd.read_csv("constructed\\big_sec_sentiment.csv", \
+dtype={'string_datetime': 'object'}, sep=',', nrows=200000)
 sentiment_df=sentiment_df.loc[:, ~sentiment_df.columns.str.contains('^Unnamed')]
+sentiment_df=sentiment_df.reset_index(drop=True)
+
+
+
 sentiment_df=sentiment_df.\
-loc[~(sentiment_df['date']<'1999-01-01'),:]
+loc[~(sentiment_df['date']==0),:]
+
 sentiment_df=sentiment_df.drop_duplicates(subset=['ticker', 'date'])
 sentiment_df.date=pd.to_datetime(sentiment_df.date)
+
 sentiment_df=sentiment_df.sort_values(by=['ticker', 'date'])
 sentiment_df=sentiment_df.reset_index(drop=True)
 sentiment_df['ticker']=sentiment_df['ticker'].str.strip()
 
 #Bring in And Merge Financial Data
-master_finance_df=pd.read_csv("constructed\\capstone\\master_finance_save.csv", sep=',')
+master_finance_df=pd.read_csv("constructed\\big_stack_backup.csv", sep=',')
 master_finance_df= master_finance_df.loc[:, ~master_finance_df.columns.str.contains('^Unnamed')]
 master_finance_df=master_finance_df.\
 loc[~(master_finance_df['roll_resid'] == 0),:]
+master_finance_df=master_finance_df.\
+loc[~(master_finance_df['roll_resid'].isnull()),:]
 master_finance_df.date=pd.to_datetime(master_finance_df.date)
 master_finance_df=master_finance_df.reset_index(drop=True)
 master_finance_df=master_finance_df.sort_values(by=['ticker', 'date'])
@@ -118,32 +155,39 @@ master_finance_df['ret_ind']=master_finance_df['arith_resid'].\
 apply(lambda x: 1 if x >=0  else 0)
 master_finance_df['ticker']=master_finance_df['ticker'].str.strip()
 
-
-#output merged bio stock sample dataframe
-bio_merge_sample_df=\
-pd.merge(master_finance_df, sentiment_df, how='left', \
-on=['ticker', 'date'])
-bio_merge_sample_df=\
-bio_merge_sample_df[['ticker', 'date', 'sp500', 'price', 'ln_return_index', 'ln_return_price',\
-'roll_resid', 'arith_resid', 'path']]
-bio_merge_sample_df.to_csv("constructed\\capstone\\bio_merge_sample.csv", sep=',')
-
-
-
+master_finance_df.dtypes
+sentiment_df.dtypes
 analysis_df=pd.merge(master_finance_df, sentiment_df, how='inner', \
 on=['ticker', 'date'])
 analysis_df=analysis_df.reset_index(drop=True)
+analysis_df.dtypes
 
 
+#subset analysis df by residual size
+analysis_df['abs_arith_resid']=abs(analysis_df['arith_resid'])
+analysis_df['abs_arith_resid'].describe()
+analysis_df['mean_abs_resid']=analysis_df['abs_arith_resid'].mean()
+analysis_df['std_abs_resid']=analysis_df['abs_arith_resid'].std()
 
-sec_texts=analysis_df['text']
+analysis_df['cutoff_a']=analysis_df['mean_abs_resid']+.5*analysis_df['std_abs_resid']
+analysis_df['cutoff_b']=analysis_df['mean_abs_resid']+1*analysis_df['std_abs_resid']
+
+analysis_a_df=analysis_df.\
+loc[(analysis_df['abs_arith_resid']>analysis_df['cutoff_a']),:]
+
+analysis_b_df=analysis_df.\
+loc[(analysis_df['abs_arith_resid']>analysis_df['cutoff_b']),:]
+
+
+#model and analyze ALL
+sec_texts=analysis_b_df['text']
 
 #TFID
 tf = TfidfVectorizer(binary=True, stop_words='english', max_df=.5, min_df=.01, \
-max_features=200)
+max_features=2000)
 tf.fit(sec_texts)
 X = tf.transform(sec_texts)
-y=analysis_df['ret_ind']
+y=analysis_b_df['ret_ind']
 
 X_train, X_test, y_train, y_test = train_test_split(
 X, y, train_size = 0.5
@@ -176,9 +220,9 @@ print(confusion_matrix(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 
 
-bio_features=sorted(feature_to_coef.items(), key=lambda x: x[1])
-bio_features_df=pd.DataFrame(bio_features, columns=['word', 'coef_value'])
-bio_features_df.to_csv("constructed\\bio_dataset_features.csv", sep=',')
+all_features=sorted(feature_to_coef.items(), key=lambda x: x[1])
+all_features_df=pd.DataFrame(all_features, columns=['word', 'coef_value'])
+all_features_df.to_csv("constructed\\large_dataset_features.csv", sep=',')
 
 
 #TFID, CV
@@ -186,7 +230,7 @@ tf = TfidfVectorizer(binary=True, stop_words='english', max_df=.5, min_df=.01, \
 max_features=200, ngram_range=(1, 2))
 tf.fit(sec_texts)
 X = tf.transform(sec_texts)
-y=analysis_df['ret_ind']
+y=analysis_b_df['ret_ind']
 
 X_train, X_test, y_train, y_test = train_test_split(
 X, y, train_size = 0.5
@@ -251,4 +295,3 @@ models = [
 
 for model in models:
     score_model(X, y, model)
-
